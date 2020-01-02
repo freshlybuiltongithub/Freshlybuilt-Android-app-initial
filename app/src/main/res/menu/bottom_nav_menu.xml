@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/home_nav"
+        android:title="Home"
+        android:icon="@drawable/ic_home_selected"
+        />
+
+    <item android:id="@+id/groups_nav"
+        android:title="Groups"
+        android:icon="@drawable/ic_groups_unselected"
+        />
+
+    <item android:id="@+id/qna_nav"
+        android:title="Q &amp; A"
+        android:icon="@drawable/ic_qna_unselected"
+        />
+
+    <item android:id="@+id/profile_nav"
+        android:title="Profile"
+        android:icon="@drawable/ic_profile_unselected"
+        />
+
+</menu>
