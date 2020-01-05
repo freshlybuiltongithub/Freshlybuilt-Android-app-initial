@@ -10,15 +10,24 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.freshlybuilt.enduserapp.adapters.HomePagerAdapter;
+import com.freshlybuilt.enduserapp.api.Api;
+import com.freshlybuilt.enduserapp.api.ApiInstance;
+import com.freshlybuilt.enduserapp.models.PostsResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         initUI();
+        getPosts();
 
     }
 
@@ -97,6 +107,30 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 return true;
+            }
+        });
+    }
+
+    private void getPosts()
+    {
+        Retrofit retrofit = ApiInstance.getInstance();
+        Api api  = retrofit.create(Api.class);
+        Call<PostsResponse> call = api.getPosts();
+        call.enqueue(new Callback<PostsResponse>() {
+            @Override
+            public void onResponse(Call<PostsResponse> call, Response<PostsResponse> response) {
+                if(response.isSuccessful())
+                {
+                    Log.d("CALL_RESULT",response.body().getStatus());
+
+                }
+                else
+                    Log.d("CALL_RES_ER",response.errorBody().toString());
+            }
+
+            @Override
+            public void onFailure(Call<PostsResponse> call, Throwable t) {
+                    Log.d("CALL_RES_ERROR",t.getMessage());
             }
         });
     }
