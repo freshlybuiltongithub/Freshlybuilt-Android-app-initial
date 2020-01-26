@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiInstance {
 
     public static Retrofit instance;
-    public static  String BASE_URL = "https://freshlybuilt.com/api/";
+    public static  String BASE_URL = "http://freshlybuilt.com/api/";
 
 
     public static Retrofit getInstance()

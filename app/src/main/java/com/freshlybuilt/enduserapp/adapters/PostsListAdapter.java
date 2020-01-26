@@ -1,16 +1,38 @@
 package com.freshlybuilt.enduserapp.adapters;
 
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.freshlybuilt.enduserapp.ClickListeners;
 import com.freshlybuilt.enduserapp.R;
+import com.freshlybuilt.enduserapp.models.Posts;
+import com.freshlybuilt.enduserapp.models.PostsResponse;
+
+import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.PostViewHolder> {
+    ArrayList<Posts> PostsResponsesList ;
+   final ClickListeners onClickListener ;
+    Context context;
+          public PostsListAdapter(ArrayList<Posts> PostsResponsesList, Context context,ClickListeners onClickListener){
+              this.PostsResponsesList=PostsResponsesList;
+              this.context=context;
+              this.onClickListener=onClickListener;
+
+          }
+
 
     @NonNull
     @Override
@@ -21,21 +43,46 @@ public class PostsListAdapter extends RecyclerView.Adapter<PostsListAdapter.Post
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        holder.mDesc.setText("This is a sample description of project. And just keep it short. There’s nothing happy about any new year, so don’t feel blessed at all. Let the world go insane ......... ");
+              final Posts post=PostsResponsesList.get(position);
+              holder.mTitle.setText(post.getTitle());
+              holder.mAuthor.setText(post.getAuthor().getName());
+              String tempDetails=post.getExcerpt();
+              String excerpt=tempDetails.substring(tempDetails.indexOf("<p>")+3, tempDetails.indexOf("<a"));
+              Log.d("Tag",excerpt);
+              holder.mDesc.setText(excerpt);
+              holder.mPost.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+                    onClickListener.OnPostClick(post);
+                  }
+              });
+              Glide.with(context)
+                .load(post.getThumbnailImages().getMedium().getUrl())
+                .into(holder.mImage);
+
+
     }
 
     @Override
     public int getItemCount() {
-        return 8;
+        return PostsResponsesList.size();
     }
 
     class PostViewHolder extends RecyclerView.ViewHolder {
 
         TextView mDesc;
+        TextView mTitle;
+        TextView mAuthor;
+        ImageView mImage;
+        LinearLayout mPost;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
             mDesc = itemView.findViewById(R.id.post_desc);
+            mTitle=itemView.findViewById(R.id.post_title);
+            mAuthor=itemView.findViewById(R.id.post_author);
+            mImage=itemView.findViewById(R.id.post_img);
+            mPost=itemView.findViewById(R.id.post_card);
         }
     }
 }

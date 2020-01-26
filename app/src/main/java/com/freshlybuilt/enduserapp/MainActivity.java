@@ -54,13 +54,18 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         initUI();
-        getPosts();
+
+           // mBottomNavBar.setSelectedItemId(R.id.home_nav);
+
+      //  getPosts();
 
     }
 
     private void initUI()
     {
         mBottomNavBar = findViewById(R.id.bottom_nav_bar);
+        mBottomNavBar.setSelectedItemId(R.id.home_nav);
+
         mManager = getSupportFragmentManager();
 
         mViewPager = findViewById(R.id.fragment_container);
@@ -111,27 +116,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void getPosts()
-    {
-        Retrofit retrofit = ApiInstance.getInstance();
-        Api api  = retrofit.create(Api.class);
-        Call<PostsResponse> call = api.getPosts();
-        call.enqueue(new Callback<PostsResponse>() {
-            @Override
-            public void onResponse(Call<PostsResponse> call, Response<PostsResponse> response) {
-                if(response.isSuccessful())
-                {
-                    Log.d("CALL_RESULT",response.body().getStatus());
-
-                }
-                else
-                    Log.d("CALL_RES_ER",response.errorBody().toString());
-            }
-
-            @Override
-            public void onFailure(Call<PostsResponse> call, Throwable t) {
-                    Log.d("CALL_RES_ERROR",t.getMessage());
-            }
-        });
-    }
+//    private void getPosts()
+//    {
+//        Retrofit retrofit = ApiInstance.getInstance();
+//        Api api  = retrofit.create(Api.class);
+//        Call<PostsResponse> call = api.getPosts();
+//        call.enqueue(new Callback<PostsResponse>() {
+//            @Override
+//            public void onResponse(Call<PostsResponse> call, Response<PostsResponse> response) {
+//                if(response.isSuccessful())
+//                {
+//                    Log.d("CALL_RESULT",response.body().getStatus());
+//
+//                }
+//                else
+//                    Log.d("CALL_RES_ER",response.errorBody().toString());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<PostsResponse> call, Throwable t) {
+//                    Log.d("CALL_RES_ERROR",t.getMessage());
+//            }
+//        });
+//    }
 }
