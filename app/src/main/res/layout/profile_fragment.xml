@@ -1,0 +1,199 @@
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+   <de.hdodenhof.circleimageview.CircleImageView
+       android:id="@+id/profile_img"
+       android:layout_marginStart="24dp"
+       android:clickable="true"
+       android:layout_marginTop="32dp"
+       android:layout_gravity="center_horizontal"
+       android:src="@drawable/user_profiledefault"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:elevation="4dp"
+       />
+
+    <TextView
+        android:layout_above="@+id/tv1"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_toEndOf="@+id/profile_img"
+        android:text="100"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_alignBottom="@+id/profile_img"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@+id/profile_img"
+        android:text="Posts"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_above="@+id/tv2"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_toEndOf="@+id/tv1"
+        android:text="100"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_alignBottom="@+id/profile_img"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@+id/tv1"
+        android:text="Points"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_above="@+id/tv3"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:layout_toEndOf="@+id/tv2"
+        android:text="100"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_alignBottom="@+id/profile_img"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@+id/tv2"
+        android:text="Views"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        />
+
+
+ <TextView
+     android:id="@+id/profile_name"
+     android:text="Poloman"
+     android:textStyle="bold"
+     android:textColor="@android:color/black"
+     android:textSize="18sp"
+     android:layout_below="@id/profile_img"
+     android:layout_marginTop="12dp"
+     android:layout_alignStart="@+id/profile_img"
+     android:layout_marginStart="8dp"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"/>
+
+
+ <LinearLayout
+     android:orientation="horizontal"
+     android:layout_marginTop="12dp"
+     android:layout_marginStart="32dp"
+     android:layout_marginEnd="32dp"
+     android:layout_below="@id/profile_name"
+     android:id="@+id/seperator"
+     android:background="@android:color/darker_gray"
+     android:layout_width="match_parent"
+     android:layout_height="2dp"/>
+
+ <TextView
+     android:id="@+id/tv11"
+     android:text="Overview"
+     android:textSize="14sp"
+     android:layout_below="@id/seperator"
+     android:layout_alignStart="@+id/seperator"
+     android:layout_marginTop="8dp"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"/>
+
+ <androidx.cardview.widget.CardView
+     android:id="@+id/cv1"
+     app:cardElevation="4dp"
+     android:layout_marginStart="32dp"
+     android:layout_marginEnd="32dp"
+     android:layout_marginTop="12dp"
+     android:layout_below="@+id/tv11"
+     android:layout_width="match_parent"
+     android:layout_height="40dp">
+
+  <RelativeLayout
+      android:background="@drawable/shape_border_edittext"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+ </androidx.cardview.widget.CardView>
+
+ <androidx.cardview.widget.CardView
+     android:id="@+id/cv2"
+     app:cardElevation="4dp"
+     android:layout_marginStart="32dp"
+     android:layout_marginEnd="32dp"
+     android:layout_marginTop="12dp"
+     android:layout_below="@+id/cv1"
+     android:layout_width="match_parent"
+     android:layout_height="40dp">
+
+  <RelativeLayout
+      android:background="@drawable/shape_border_edittext"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+ </androidx.cardview.widget.CardView>
+
+
+ <androidx.cardview.widget.CardView
+     android:id="@+id/cv3"
+     app:cardElevation="4dp"
+     android:layout_marginStart="32dp"
+     android:layout_marginEnd="32dp"
+     android:layout_marginTop="12dp"
+     android:layout_below="@+id/cv2"
+     android:layout_width="match_parent"
+     android:layout_height="40dp">
+
+  <RelativeLayout
+      android:background="@drawable/shape_border_edittext"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+ </androidx.cardview.widget.CardView>
+
+
+ <androidx.cardview.widget.CardView
+     android:id="@+id/cv4"
+     app:cardElevation="4dp"
+     android:layout_marginStart="32dp"
+     android:layout_marginEnd="32dp"
+     android:layout_marginTop="12dp"
+     android:layout_below="@+id/cv3"
+     android:layout_width="match_parent"
+     android:layout_height="40dp">
+
+  <RelativeLayout
+      android:background="@drawable/shape_border_edittext"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+ </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>
