@@ -1,5 +1,8 @@
 package com.freshlybuilt.enduserapp.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +11,11 @@ public class PostsResponse {
  private float count;
  private float count_total;
  private float pages;
- List< Object > posts = new ArrayList< Object >();
+ @SerializedName("posts")
+ @Expose
+ private List<Posts> posts = null;
+
+// List< Object > posts = new ArrayList< Object >();
 
 
  // Getter Methods 
@@ -29,6 +36,16 @@ public class PostsResponse {
   return pages;
  }
 
+ public List<Posts> getPosts() { return posts; }
+
+
+
+
+
+
+
+
+
  // Setter Methods 
 
  public void setStatus(String status) {
@@ -46,4 +63,9 @@ public class PostsResponse {
  public void setPages(float pages) {
   this.pages = pages;
  }
+
+ public void setPosts(List<Posts> posts) { this.posts = posts; }
+
+
+
 }

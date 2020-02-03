@@ -12,5 +12,5 @@ public interface Api {
 
 
     @GET("get_recent_posts/")
-    Call<PostsResponse> getPosts();
+    Call<PostsResponse> getPostsResponse();
 }
