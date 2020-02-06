@@ -118,7 +118,7 @@ public  class ProfileFragment extends Fragment {
                     Log.d("id",id);
                      image_url = "https://graph.facebook.com/" + id + "/picture?width=60&height=60";
                     RequestOptions requestOptions = new RequestOptions();
-                    
+
 
 
                 } catch (JSONException e) {
