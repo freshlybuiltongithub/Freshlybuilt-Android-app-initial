@@ -54,8 +54,8 @@ public  class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment,container,false);
 //        mPostsLv = view.findViewById(R.id.post_lv);
-         profileImg=(CircleImageView) view.findViewById(R.id.profile_img);
-         profileName=(TextView) view.findViewById(R.id.profile_name);
+         profileImg= view.findViewById(R.id.profile_img);
+         profileName=view.findViewById(R.id.profile_name);
 
         fb_userloggedin();
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount( getActivity());
@@ -99,7 +99,9 @@ public  class ProfileFragment extends Fragment {
         else if(AccessToken.getCurrentAccessToken()!=null){
            loadUserProfile(AccessToken.getCurrentAccessToken());
         }
-        else{}
+        else{
+            //Freshlybuiltlogin profile
+        }
 
     }
     URL profilepic;
@@ -116,7 +118,7 @@ public  class ProfileFragment extends Fragment {
                     Log.d("id",id);
                      image_url = "https://graph.facebook.com/" + id + "/picture?width=60&height=60";
                     RequestOptions requestOptions = new RequestOptions();
-                    requestOptions.dontAnimate();
+                    
 
 
                 } catch (JSONException e) {
@@ -137,8 +139,6 @@ public  class ProfileFragment extends Fragment {
         request.executeAsync();
 //                   Intent intent=new Intent(LoginActivity.this,MainActivity.class);
 //                   startActivity(intent);
-
-
 
     }
 
