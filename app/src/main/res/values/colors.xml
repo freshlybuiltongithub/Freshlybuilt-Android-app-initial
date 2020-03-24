@@ -5,7 +5,8 @@
     <color name="colorAccent">#2196F3</color>
 
     <color name="AppBackground">#F5F5F5</color>
+<color name="black">#000000</color>
+<color name="disabled">#999999</color>
+    <color name="enabled">#FFFFFF</color>
 
-
-    <color name="mtrl_textinput_default_box_stroke_color">#000000</color>
 </resources>

@@ -7,9 +7,10 @@
        android:id="@+id/profile_img"
        android:layout_marginStart="24dp"
        android:clickable="true"
+       android:focusable="true"
        android:layout_marginTop="32dp"
        android:layout_gravity="center_horizontal"
-       android:src="@drawable/user_profiledefault"
+       android:src="@drawable/profiledefault"
        android:layout_width="80dp"
        android:layout_height="80dp"
        android:elevation="4dp"
@@ -87,11 +88,8 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         />
-
-
  <TextView
      android:id="@+id/profile_name"
-     android:text="Poloman"
      android:textStyle="bold"
      android:textColor="@android:color/black"
      android:textSize="18sp"

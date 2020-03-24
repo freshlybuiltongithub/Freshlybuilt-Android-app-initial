@@ -5,14 +5,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiInstance {
 
-    public static ApiInstance instance;
-    public static  String BASE_URL = "https://freshlybuilt.com/api/";
+    private static ApiInstance instance;
+    private static  String BASE_URL = "https://freshlybuilt.com/api/";
     private static final String REGISTER_URL="https://freshlybuilt.com/api/user/";
     private static final String NONCE_URL="https://freshlybuilt.com/api/";
     private static final String COOKIE_generate_URL="https://freshlybuilt.com/api/user/";
     private static final String validate_URL="https://freshlybuilt.com/api/user/";
     private static final String changePass="https://freshlybuilt.com/api/user/";
-    public Retrofit retrofit,Nonce,cookie,validate,base,changepass;
+    private static final String queslist="https://freshlybuilt.com/newapi/wp/v2/";
+    private static final String search="https://freshlybuilt.com/api/";
+    private static final String quote="https://api.quotable.io/";
+    private Retrofit retrofit,Nonce,cookie,validate,base,changepass,QuesFetch,searchResult,generateQuote;
     public static   ApiInstance getInstance()
     {
         if(instance == null)
@@ -32,8 +35,13 @@ public class ApiInstance {
         cookie=new Retrofit.Builder().baseUrl(COOKIE_generate_URL).addConverterFactory(GsonConverterFactory.create()).build();
         validate=new Retrofit.Builder().baseUrl(validate_URL).addConverterFactory(GsonConverterFactory.create()).build();
         changepass=new Retrofit.Builder().baseUrl(changePass).addConverterFactory(GsonConverterFactory.create()).build();
+         QuesFetch=new Retrofit.Builder().baseUrl(queslist).addConverterFactory(GsonConverterFactory.create()).build();
+        generateQuote=new Retrofit.Builder().baseUrl(quote).addConverterFactory(GsonConverterFactory.create()).build();
+         searchResult=new Retrofit.Builder().baseUrl(search).addConverterFactory(GsonConverterFactory.create()).build();
     }
-
+    public Api getQuesApi(){
+        return QuesFetch.create(Api.class);
+    }
     public Api getBaseApi(){
         return base.create(Api.class);
     }
@@ -50,5 +58,7 @@ public class ApiInstance {
         return validate.create(Api.class);
     }
     public Api getchangePass(){return changepass.create(Api.class); }
+    public Api getSearchResults(){return searchResult.create(Api.class); }
+    public Api getQuotesApi(){return generateQuote.create(Api.class); }
 
 }

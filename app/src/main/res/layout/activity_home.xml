@@ -12,11 +12,20 @@
         app:liftOnScroll="true"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+    <com.miguelcatalan.materialsearchview.MaterialSearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:searchVoiceIcon="@drawable/ic_voice_search"
+        />
+</FrameLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -36,5 +45,4 @@
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@drawable/bottom_nav_colors"
         app:itemTextColor="@drawable/bottom_nav_colors"/>
-
 </LinearLayout>

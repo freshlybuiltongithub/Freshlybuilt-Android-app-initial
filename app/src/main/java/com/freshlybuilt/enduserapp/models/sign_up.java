@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
 
         private TextInputEditText username,password,confirm_pass,email;
         public String nonce=null;String notify="both";
+    ProgressBar mProgressBar;
         private static final Pattern PASSWORD_PATTERN =
                 Pattern.compile("^" +
                         "(?=.*[0-9])" +
@@ -54,11 +56,15 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
             confirm_pass=findViewById(R.id.confirm_pass);
             customToast=findViewById(R.id.customtoastText);
             findViewById(R.id.button).setOnClickListener(this);
+            mProgressBar = findViewById(R.id.progressBar);
+            mProgressBar.setVisibility(View.GONE);
 
 
         }
 
         private void sign_up(){
+            mProgressBar.setVisibility(View.VISIBLE);
+
             String user=username.getText().toString().trim();
             String email_id=  email.getText().toString().trim();
             String Password=password.getText().toString().trim();
@@ -115,7 +121,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
                     try{
                         Json=response.body().string();
                     }
-                    catch(IOException e){
+                    catch(Exception e){
                         e.printStackTrace();
                     }
                     if(Json!=null){
@@ -125,35 +131,29 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
                             String Password=password.getText().toString().trim();
                             JSONObject object=new JSONObject(Json);
                             nonce  = object.getString("nonce");
+                            //Api Call for REGISTERATION
                             Call<ResponseBody> api_Call= ApiInstance.getInstance().getApi().register(user,email_id,nonce,notify,Password);
                             api_Call.enqueue(new Callback<ResponseBody>() {
                                 @Override
                                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                                     String s=null;
-                                    String message;
-
-
                                     try{
                                         s=response.body().string();
-
                                     }
                                     catch(IOException e){
                                         e.printStackTrace();
                                     }
+                                    mProgressBar.setVisibility(View.GONE);
                                     if(s!=null){
-                                    Log.d("inside","s");
-                                   String status;
                                         try {
                                             JSONObject object = new JSONObject(s);
-                                            status = object.getString("status");
-                                            message = object.getString("error");
-                                            Log.d("inside","h"+status+"i");
-                                            Log.d("inside",message);
+                                            String status = object.getString("status");
                                             if (status.equals("error")) {
+                                                String message = object.getString("error");
                                                 Log.d("inside",status);
                                                 Toast.makeText(sign_up.this, message, Toast.LENGTH_LONG).show();
                                             }
-                                            if(status.isEmpty()){
+                                            if(status.equals("ok")){
                                                 View layout=getLayoutInflater().inflate((R.layout.custom_toast),(ViewGroup)findViewById(R.id.customtoast));
                                                  Toast toast=new Toast(getApplicationContext());
                                                  toast.setGravity(Gravity.CENTER,0,0);
@@ -161,9 +161,6 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
                                                  toast.setDuration(Toast.LENGTH_LONG);
                                                  toast.show();
                                             }
-
-
-
                                         }
                                         catch(JSONException e){
                                             e.printStackTrace();
@@ -177,6 +174,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
                                 }
                             });
                         }
+
+
                         catch(JSONException e){
                             e.printStackTrace();
                         }
@@ -187,55 +186,6 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
                    Toast.makeText(sign_up.this,t.getMessage(),Toast.LENGTH_LONG).show();
                 }
             } );
-
- //Api Call for REGISTERATION
-
-//    Call<ResponseBody> api_Call= ApiInstance.getInstance().getApi().register(user,email_id,nonce,notify,Password);
-//    api_Call.enqueue(new Callback<ResponseBody>() {
-//        @Override
-//        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//            String s=null;
-//            String success="Welcome to FreshlyBuilt";
-//            String message;
-//            String status;
-//            try{
-//                       s=response.body().string();
-//
-//                  }
-//                  catch(IOException e){
-//                      e.printStackTrace();
-//                  }
-//            if(s!=null){
-//
-//                try{
-//                    JSONObject object=new JSONObject(s);
-//                    status =   object.getString("status");
-//                    message  = object.getString("error");
-//
-//                    if(status.equals("ok")){
-//                        LayoutInflater inflater=getLayoutInflater();
-//                        View l=inflater.inflate(R.layout.custom_toast,(ViewGroup) findViewById(R.id.customtoast));
-//                        customToast.setText(success);
-//                        Toast toast=new Toast(sign_up.this);
-//                        toast.setDuration(Toast.LENGTH_LONG);toast.setView(l);toast.show();
-//                    }
-//
-//                    if(status.equals("error")){
-//                        Toast.makeText(sign_up.this, message, Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//                catch(JSONException e){
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//
-//        @Override
-//        public void onFailure(Call<ResponseBody> call, Throwable t) {
-//            Toast.makeText(sign_up.this,"Try Again",Toast.LENGTH_LONG).show();
-//        }
-//    });
-
         }
         @Override
         public void onClick(View view) {
@@ -243,7 +193,6 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener {
                 case R.id.button:
                     sign_up();      //METHOD TO VALIDATE AND POST USER DETAILS
                     break;
-
             }
         }
     }

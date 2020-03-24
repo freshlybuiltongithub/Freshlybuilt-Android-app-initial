@@ -3,4 +3,30 @@
     <string name="facebook_app_id">178061799932587</string>
     <string name="fb_login_protocol_scheme">fb178061799932587</string>
     <string name="server_client_id">23269809514-hdp8fk0mhl15pi0nclnquh9knffenuvh.apps.googleusercontent.com</string>
+    <string name="fetching">fetching...</string>
+    <string name="noOfPosts">100</string>
+    <string name="Posts">Posts</string>
+    <string name="PostViews">Views</string>
+    <string name="Search">Search...</string>
+    <string name="Logout">LogOut</string>
+    <string name="login">LogIn</string>
+    <string name="or">OR</string>
+    <string name="enterDetails">Enter Username/email</string>
+    <string name="username">Username</string>
+    <string name="welcomeMsg">Welcome To Freshlybuilt</string>
+    <string name="signup">SignUp</string>
+    <string name="pass">Password</string>
+    <string name="cnfrm">Confirm Password</string>
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="query_suggestions">
+        <item>Android</item>
+        <item>iOS</item>
+        <item>SCALA</item>
+        <item>Ruby</item>
+        <item>JavaScript</item>
+    </string-array>
 </resources>

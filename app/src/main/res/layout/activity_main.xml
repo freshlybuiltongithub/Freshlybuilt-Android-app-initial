@@ -4,36 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".models.MainActivity"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/freshlybuiltlogo"
-        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        />
+        app:layout_constraintStart_toEndOf="@+id/textView" />
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="12dp"
         android:layout_marginBottom="30dp"
-        android:text="FreshlyBuilt"
+        android:text="@string/app_name"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -44,17 +42,17 @@
         android:indeterminate="true"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@id/cardView"
-        app:layout_constraintStart_toEndOf="@id/cardView"/>
+        app:layout_constraintStart_toEndOf="@id/cardView" />
 
     <androidx.cardview.widget.CardView
-        app:cardElevation="8dp"
-        android:translationZ="6dp"
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="300dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="60dp"
+        android:translationZ="6dp"
+        app:cardElevation="8dp"
         app:layout_constraintBottom_toTopOf="@+id/fb_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -68,13 +66,13 @@
                 android:id="@+id/login_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="2dp"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="@android:color/black"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -83,14 +81,14 @@
                 android:id="@+id/signup_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="24dp"
-                android:layout_marginRight="32dp"
+                android:layout_marginEnd="32dp"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="2dp"
-                android:text="Sign up"
+                android:text="@string/signup"
                 android:textSize="18sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -106,18 +104,17 @@
                 app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/login_user"
-                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="5dp"
-                    android:textSize="12sp"
                     android:hint="Username / Email"
                     android:inputType="text"
                     android:textColorHint="@android:color/holo_blue_light"
+                    android:textSize="12sp"
                     tools:layout_editor_absoluteX="12dp"
                     tools:layout_editor_absoluteY="551dp" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -125,23 +122,23 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
                 android:layout_below="@+id/username_et"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="20dp"
                 android:elevation="4dp"
-                app:boxStrokeColor="@android:color/black">
+                app:boxStrokeColor="@android:color/black"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
                     android:id="@+id/login_pass"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
                     android:hint="Password"
-                    android:textSize="12sp"
                     android:inputType="textPassword"
                     android:textColorHint="@android:color/holo_blue_light"
+                    android:textSize="12sp"
                     tools:layout_editor_absoluteX="12dp"
                     tools:layout_editor_absoluteY="551dp" />
 
@@ -149,8 +146,8 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
                 android:id="@+id/forogot"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/password_et"
                 android:layout_alignRight="@+id/password_et"
@@ -162,64 +159,35 @@
                 android:text="Forgot password?" />
 
 
-
-
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/button_login"
+        android:enabled="false"
+        android:background="@drawable/login_button"
         android:layout_width="124dp"
-        android:clickable="true"
         android:layout_height="48dp"
-        android:layout_marginBottom="48dp"
-        android:background="@android:color/black"
+        android:layout_marginBottom="40dp"
+        android:clickable="true"
         android:elevation="8dp"
         android:stateListAnimator="@null"
-        android:text="Login"
+        android:text="@string/login"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="15sp"
         android:translationZ="8dp"
         app:layout_constraintBottom_toTopOf="@+id/fb_login"
         app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/cardView" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/google_login"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="40dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="587dp"
-        />
-
-    <com.facebook.login.widget.LoginButton
-
-        android:focusable="true"
-        android:clickable="true"
-        android:id="@+id/fb_login"
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:layout_marginLeft="22dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/google_login"
-        app:layout_constraintStart_toEndOf="@+id/google_login"
-        app:layout_constraintTop_toTopOf="@+id/google_login"
-
-        />
-
     <View
         android:id="@+id/view"
         android:layout_width="148dp"
         android:layout_height="1dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="8dp"
         android:background="#000000"
         app:layout_constraintBottom_toTopOf="@id/fb_login"
@@ -227,12 +195,12 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="58dp"
-        android:layout_height="23dp"
+        android:layout_width="46dp"
+        android:layout_height="25dp"
         android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:paddingLeft="10dp"
-        android:text="OR"
+        android:layout_marginTop="8dp"
+        android:paddingRight="10dp"
+        android:text="@string/or"
         android:textColor="@android:color/black"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -243,11 +211,31 @@
         android:id="@+id/view3"
         android:layout_width="160dp"
         android:layout_height="1dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginBottom="8dp"
         android:background="#000000"
         app:layout_constraintBottom_toTopOf="@id/fb_login"
-        app:layout_constraintStart_toEndOf="@id/textView3" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/fb_login"
+        android:layout_width="195dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="143dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_login"
+        android:layout_width="200dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fb_login" />
 </androidx.constraintlayout.widget.ConstraintLayout>

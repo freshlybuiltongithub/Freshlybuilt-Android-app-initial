@@ -1,16 +1,33 @@
 package com.freshlybuilt.enduserapp.api;
 
+import com.freshlybuilt.enduserapp.models.Post;
 import com.freshlybuilt.enduserapp.models.PostsResponse;
+import com.freshlybuilt.enduserapp.models.PostsSearch;
+import com.freshlybuilt.enduserapp.models.QuestionList;
+import com.freshlybuilt.enduserapp.models.Tag;
 
+import java.util.List;
+
+import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface Api {
-
+@GET("random")
+Call<ResponseBody> getQuotes();
+    @GET("question/")
+    Call<List<QuestionList>> getQues(@Query("page") int page);
+    @GET("question/")
+    Call<List<QuestionList>> getLatestQues();
+@GET("get_search_results/")
+Call<PostsSearch> getSearchResults(@Query("search") String Search, @Query("page") int page);
+    @GET("question_tag/")
+    Call<List<Tag>> getTags(@Query("page") int page);
 
     @GET("get_recent_posts/")
     Call<PostsResponse> getPosts();
