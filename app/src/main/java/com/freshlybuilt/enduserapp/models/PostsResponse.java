@@ -9,8 +9,8 @@ import java.util.List;
 public class PostsResponse {
  private String status;
  private float count;
- private float count_total;
- private float pages;
+ private int count_total;
+ private int pages;
  @SerializedName("posts")
  @Expose
  private List<Posts> posts = null;
@@ -28,11 +28,11 @@ public class PostsResponse {
   return count;
  }
 
- public float getCount_total() {
+ public int getCount_total() {
   return count_total;
  }
 
- public float getPages() {
+ public int getPages() {
   return pages;
  }
 
@@ -56,11 +56,11 @@ public class PostsResponse {
   this.count = count;
  }
 
- public void setCount_total(float count_total) {
+ public void setCount_total(int count_total) {
   this.count_total = count_total;
  }
 
- public void setPages(float pages) {
+ public void setPages(int pages) {
   this.pages = pages;
  }
 
