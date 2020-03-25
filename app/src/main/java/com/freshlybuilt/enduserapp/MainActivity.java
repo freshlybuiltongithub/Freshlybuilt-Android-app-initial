@@ -11,11 +11,9 @@ import androidx.viewpager.widget.ViewPager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.freshlybuilt.enduserapp.adapters.HomePagerAdapter;
 import com.freshlybuilt.enduserapp.api.Api;
@@ -41,16 +39,9 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
 
         getWindow().setStatusBarColor(Color.BLACK);
 
@@ -73,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private void initUI()
     {
         mBottomNavBar = findViewById(R.id.bottom_nav_bar);
-       // mBottomNavBar.setSelectedItemId(R.id.home_nav);
+        mBottomNavBar.setSelectedItemId(R.id.home_nav);
 
         mManager = getSupportFragmentManager();
 
