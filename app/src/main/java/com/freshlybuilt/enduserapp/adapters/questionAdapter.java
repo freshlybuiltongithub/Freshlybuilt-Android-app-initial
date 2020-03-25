@@ -88,7 +88,7 @@ private boolean isLoadingAdded=false;
                      count++;
                      Log.d("while","inwhile"+ques.getTitle().getRendered());
                      numOfViews--;
-                     TextView textView1 = new TextView(this.context);
+                     TextView textView1 = new TextView(context);
                      LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                              ViewGroup.LayoutParams.WRAP_CONTENT);
                      params.setMargins(15,10,0,0);

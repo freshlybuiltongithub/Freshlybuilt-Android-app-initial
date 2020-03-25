@@ -95,6 +95,29 @@ public class searchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                             customTabsIntent.launchUrl(context, Uri.parse(url));
                         }
                     });
+                        if (post.getTags().size() > 0) {
+                            int numOfViews = post.getTags().size(), pos = 0;
+
+                            while (numOfViews > 0) {
+
+
+                                numOfViews--;
+                                TextView textView1 = new TextView(context);
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                                params.setMargins(15, 10, 0, 0);
+                                textView1.setBackgroundResource(R.drawable.custom);
+                                textView1.setTextColor(ContextCompat.getColor(textView1.getContext(), R.color.black));
+                                textView1.setLayoutParams(params);
+                                textView1.setPadding(2, 2, 2, 2);
+                                textView1.setText(getTag(post.getTags().get(pos).toString()));
+                                searcholder.tagsLayout.addView(textView1,pos);
+
+                                //quesholder.Tag.setText(String.valueOf(ques.getQuestionTag().get(pos)));
+                                pos++;
+                            }
+                        }
+
                 }
                 catch(NullPointerException e){
                     getItemViewType(position++);
@@ -143,7 +166,7 @@ public class searchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             content= itemView.findViewById(R.id.post_desc);
             SeeMore= itemView.findViewById(R.id.loadmore);
             Date=itemView.findViewById(R.id.date);
-//            tagsLayout=(LinearLayout)itemView.findViewById(R.id.tagsLayout);
+           tagsLayout=(LinearLayout)itemView.findViewById(R.id.tagsLayout);
         }
     }
     public void add(Post p){
@@ -155,6 +178,12 @@ public class searchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void addLoadingFooter(){
         isLoadingAdded=true;
         add(new Post());
+    }
+
+    private String getTag(String tagObjectString){
+        int startOfTagString=tagObjectString.lastIndexOf("title")+6;
+        int lasttOfTagString=tagObjectString.indexOf("description")-2;
+        return tagObjectString.substring(startOfTagString,lasttOfTagString);
     }
 
     public void removeSearchLoadingFooter(){
@@ -171,5 +200,6 @@ public class searchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
         }
     }
+
 
 }

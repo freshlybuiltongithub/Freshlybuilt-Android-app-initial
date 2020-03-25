@@ -254,41 +254,8 @@ public class QAFragment extends Fragment {
             });
         }
     }
-    public void fetchSearchTags(PostsSearch p,LinearLayout tagsLayout) {
-        int numOfPosts = p.getPosts().size(), i = 0;
-while(numOfPosts>0) {
-    numOfPosts--;
-    Post post = p.getPosts().get(i);
-    i++;
-    if (post.getTags().size() > 0) {
-        int numOfViews = post.getTags().size(), pos = 0;
-
-        while (numOfViews > 0) {
 
 
-            numOfViews--;
-            TextView textView1 = new TextView(getContext());
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(15, 10, 0, 0);
-            textView1.setBackgroundResource(R.drawable.custom);
-            textView1.setTextColor(ContextCompat.getColor(textView1.getContext(), R.color.black));
-            textView1.setLayoutParams(params);
-            textView1.setPadding(2, 2, 2, 2);
-            textView1.setText(getTag(post.getTags().get(pos).toString()));
-            tagsLayout.addView(textView1,pos);
-
-            //quesholder.Tag.setText(String.valueOf(ques.getQuestionTag().get(pos)));
-            pos++;
-        }
-    }
-}
-    }
-    private String getTag(String tagObjectString){
-        int startOfTagString=tagObjectString.lastIndexOf("title")+6;
-        int lasttOfTagString=tagObjectString.indexOf("description")-2;
-        return tagObjectString.substring(startOfTagString,lasttOfTagString);
-    }
 
 
     private void fetchQues(int page) {

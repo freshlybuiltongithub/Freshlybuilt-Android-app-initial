@@ -43,7 +43,6 @@
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toStartOf="@id/cardView"
         app:layout_constraintStart_toEndOf="@id/cardView" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
@@ -56,7 +55,6 @@
         app:layout_constraintBottom_toTopOf="@+id/fb_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -161,7 +159,9 @@
 
         </RelativeLayout>
 
+
     </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/button_login"
